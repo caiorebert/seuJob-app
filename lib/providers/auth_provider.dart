@@ -38,12 +38,16 @@ class AuthProvider with ChangeNotifier {
           'Authorization': "Bearer $token",
         }
       );
-      print(response);
-      //User user = User.fromJson(jsonDecode(response.body));
-      //_user = User(id: user.id, login: login, nome: user.nome);
-      //_user.logged = true;
-      notifyListeners();
-      return true;
+      logando = false;
+
+      try {
+        User user = User.fromJson(jsonDecode(response.body));
+        _user = user;
+        notifyListeners();
+        return true;
+      } catch (e) {
+        print("error");
+      }
     }
     return false;
   }

@@ -59,7 +59,11 @@ class LoginPage extends StatelessWidget {
               onPressed: () async {
                 final login = _loginController.text.trim();
                 final senha = _senhaController.text.trim();
-                auth.login(login, senha);
+                if ( await auth.login(login, senha)) {
+                  Navigator.pushNamed(context, "/home");
+                } else {
+
+                }
               },
               child: Consumer<AuthProvider>(
                 builder: (context, auth, child) {
