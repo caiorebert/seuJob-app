@@ -74,6 +74,12 @@ class VagaPage extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: (auth.user.logged) ? FloatingActionButton(
+        onPressed: () => {
+
+        },
+        child: Icon(Icons.post_add),
+      ) : null,
     );
   }
 }

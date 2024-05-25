@@ -1,3 +1,4 @@
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:seujobapp/providers/auth_provider.dart';
 import 'package:seujobapp/utils/app_routes.dart';
 import 'package:flutter/material.dart';
@@ -21,48 +22,79 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Padding(padding: EdgeInsets.symmetric(vertical: 50)),
+          const Padding(padding: EdgeInsets.symmetric(vertical: 50)),
           Container(
-            color: Colors.yellowAccent,
-            padding: EdgeInsets.symmetric(
-              vertical: 50
+            padding: const EdgeInsets.symmetric(
+              vertical: 50,
+              horizontal: 40
             ),
             alignment: Alignment.center,
             width: double.infinity,
-            child: Text("MP4", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
+            child: Image.asset("assets/images/logo_extended.png"),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             alignment: Alignment.center,
             child: TextFormField(
               controller: _loginController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: "Login"
               ),
+              validator: (value) {
+                if (value==null || value=="") {
+                  return "Campo de login é obrigatório!";
+                }
+                return null;
+              }
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             alignment: Alignment.center,
             child: TextFormField(
               obscureText: true,
               controller: _senhaController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   hintText: "Senha"
               ),
+              validator: (value) {
+                if (value==null || value=="") {
+                  return "Campo de senha é obrigatório!";
+                }
+                return null;
+              },
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             alignment: Alignment.center,
             child: ElevatedButton(
+              style: ButtonStyle(
+                foregroundColor: MaterialStateColor.resolveWith((states) {
+                  return Colors.white;
+                }),
+                textStyle: MaterialStateProperty.resolveWith((states) {
+                  return const TextStyle(color: Colors.white);
+                }),
+                  backgroundColor: MaterialStateColor.resolveWith((states) {
+                    if (states.contains(MaterialState.pressed)) {
+                      return Colors.red;
+                    }
+                    return const Color.fromRGBO(255, 68, 85, 1);
+                  })),
               onPressed: () async {
                 final login = _loginController.text.trim();
                 final senha = _senhaController.text.trim();
-                if ( await auth.login(login, senha)) {
-                  Navigator.pushNamed(context, "/home");
+                if (login.isNotEmpty && senha.isNotEmpty) {
+                  if ( await auth.login(login, senha)) {
+                    if (context.mounted) {
+                      Navigator.pushNamed(context, "/home");
+                    }
+                  } else {
+                    Fluttertoast.showToast(msg: "Email ou senha incorretos!");
+                  }
                 } else {
-
+                  Fluttertoast.showToast(msg: "Por favor preencha os campos!");
                 }
               },
               child: Consumer<AuthProvider>(

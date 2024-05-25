@@ -24,18 +24,18 @@ class VagaItem extends StatelessWidget {
                 Padding(padding: EdgeInsets.all(15), child: Image.network("https://cdn-icons-png.flaticon.com/512/4844/4844589.png", width: 80,)),
                 Expanded(
                     child: Container(
-                      color: Colors.red,
                       alignment: Alignment.topCenter,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text("VAGA TAL E TAL E TAL"),
+                          Text("VAGA TAL E TAL E TAL", style: TextStyle(fontSize: 20),),
                         ],
                       ),
                     )
                 )
               ],
             ),
+            Divider(),
             Expanded(
               child: SizedBox(
                 height: double.infinity,
@@ -47,6 +47,7 @@ class VagaItem extends StatelessWidget {
                           children: [
                             Expanded(
                                 child: Container(
+                                  padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
                                   alignment: Alignment.centerLeft,
                                   width: double.infinity,
                                   height: double.infinity,
@@ -55,6 +56,7 @@ class VagaItem extends StatelessWidget {
                             ),
                             Expanded(
                                 child: Container(
+                                  padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
                                   alignment: Alignment.centerLeft,
                                   width: double.infinity,
                                   height: double.infinity,
@@ -63,6 +65,7 @@ class VagaItem extends StatelessWidget {
                             ),
                             Expanded(
                                 child: Container(
+                                  padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
                                   alignment: Alignment.centerLeft,
                                   width: double.infinity,
                                   height: double.infinity,
