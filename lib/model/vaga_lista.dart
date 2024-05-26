@@ -28,4 +28,18 @@ class VagaLista with ChangeNotifier {
         notifyListeners();
       }
   }
+
+  Future<Vaga?> getVagasById(int id, String token) async {
+    final response = await http.get(Uri.parse(ApiRoutes.BASE_URL + ApiRoutes.VAGAS_BY_ID + '/$id'),
+        headers: {
+          'Authorization': "Bearer $token",
+        });
+    if (response.body.isNotEmpty) {
+        dynamic json = jsonDecode(response.body);
+
+        return Vaga.fromJson(json);
+    } else {
+      return null;
+    }
+  }
 }

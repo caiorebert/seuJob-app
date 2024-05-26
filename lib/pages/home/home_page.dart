@@ -61,7 +61,7 @@ class HomePage extends StatelessWidget {
                                   child: InkWell(
                                     onTap: () => {
                                       Navigator.pushNamed(ctx, "/vaga",
-                                          arguments: {"vagaId": index})
+                                          arguments: vagasList.vagas[index])
                                     },
                                     child: VagaItem(vaga: vagasList.vagas[index]),
                                   )),
@@ -76,7 +76,7 @@ class HomePage extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Vagas"),
+          BottomNavigationBarItem(icon: Icon(Icons.work), label: "Minhas Vagas"),
         ],
       ),
     );

@@ -1,7 +1,13 @@
+import 'dart:convert';
+
 import 'package:seujobapp/model/vaga.dart';
 import 'package:seujobapp/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:seujobapp/utils/api_routes.dart';
+import '../../model/vaga_lista.dart';
+import '../../utils/app_routes.dart';
+import 'package:http/http.dart' as http;
 
 
 class VagaPage extends StatelessWidget {
@@ -12,6 +18,8 @@ class VagaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final auth = Provider.of<AuthProvider>(context);
+    final vagasList = Provider.of<VagaLista>(context);
+    final vaga = ModalRoute.of(context)!.settings.arguments as Vaga;
 
     return Scaffold(
       appBar: AppBar(),
@@ -47,8 +55,8 @@ class VagaPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(padding: EdgeInsets.all(30)),
-                            Text("VAGA DE TAL COISA", style: TextStyle(fontSize: 20, color: Colors.white),),
-                            Text("VAGA DE TAL COISA", style: TextStyle(fontSize: 15, color: Colors.white)),
+                            Text(vaga.titulo, style: TextStyle(fontSize: 20, color: Colors.white),),
+                            Text(vaga.local, style: TextStyle(fontSize: 15, color: Colors.white)),
                           ],
                         )
                       ),
@@ -70,17 +78,34 @@ class VagaPage extends StatelessWidget {
                   vertical: 10,
                   horizontal: 20
               ),
-              child: Text("LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM"),
+              child: Text(vaga.descricao),
             ),
+            Container(
+
+            )
           ],
         ),
       ),
-      floatingActionButton: (auth.user.logged) ? FloatingActionButton(
-        onPressed: () => {
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          final url = Uri.parse('${ApiRoutes.BASE_URL + ApiRoutes.INSCRICAO}');
+          final response = await http.post(url, body: json.encode({
+            'jobId': vaga.id,
+            'workedId': 1,
+          }));
 
+          if (response.statusCode == 200) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('Inscrito com sucesso!')),
+            );
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('Falha ao se inscrever.')),
+            );
+          }
         },
         child: Icon(Icons.post_add),
-      ) : null,
+      )
     );
   }
 }
