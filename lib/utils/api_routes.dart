@@ -1,15 +1,15 @@
 class ApiRoutes {
   static final BASE_URL = LOCAL;
   static final PROD = 'http://';
-  static final LOCAL = 'http://192.168.2.7:8080/api';
+  static final LOCAL = 'http://192.168.0.19:8080/api';
 
   // Users
   static const LOGIN = "/auth";
 
   static const USER = "/user/getUser";
 
-  // Pedido
-  static const PEDIDO_CREATE = "/pedidos.json";
+  // Vagas
+  static const VAGAS = "/job";
   static const PEDIDO = "/pedidos.json";
 
   // Produtos

@@ -1,3 +1,4 @@
+import 'package:seujobapp/model/vaga.dart';
 import 'package:seujobapp/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -27,8 +28,8 @@ class VagaPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    padding: EdgeInsets.all(15),
-                    decoration: BoxDecoration(
+                    padding: const EdgeInsets.all(15),
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(50)),
                       color: Colors.white,
                     ),

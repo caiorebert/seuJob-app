@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:seujobapp/model/vaga_lista.dart';
 import 'package:seujobapp/pages/home/home_page.dart';
 import 'package:seujobapp/pages/user/cadastro_page.dart';
 import 'package:seujobapp/pages/user/login_page.dart';
@@ -21,7 +22,10 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
             create: (context) => AuthProvider()
-        )
+        ),
+        ChangeNotifierProvider(
+            create: (context) => VagaLista()
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

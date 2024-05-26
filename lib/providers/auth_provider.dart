@@ -9,6 +9,8 @@ import '../utils/api_routes.dart';
 
 class AuthProvider with ChangeNotifier {
   bool logando = false;
+  String? token = "";
+
   late User _user;
 
   User get user => _user;
@@ -28,6 +30,7 @@ class AuthProvider with ChangeNotifier {
     );
     if (responseToken.body.isNotEmpty) {
       final token = jsonDecode(responseToken.body)["token"];
+      this.token = token;
       var response = await http.post(Uri.parse(ApiRoutes.BASE_URL + ApiRoutes.USER),
           body: jsonEncode({
             "login": login,

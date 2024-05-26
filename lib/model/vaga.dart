@@ -10,6 +10,19 @@ class Vaga with ChangeNotifier {
   String data_publicacao;
   String empresa;
 
-  Vaga(this.id, this.titulo, this.salary, this.descricao, this.local,
-      this.formato, this.data_publicacao, this.empresa);
+  Vaga({required this.id, required this.titulo, required this.salary, required this.descricao, required this.local,
+      required this.formato, required this.data_publicacao, required this.empresa});
+
+  factory Vaga.fromJson(Map<String, dynamic> json) {
+    return Vaga(
+      id: int.parse(json["id"].toString()),
+      titulo: json["title"],
+      salary: json["salary"],
+      data_publicacao: json["publish_date"],
+      formato: json["contract_type"],
+      empresa: json["companyId"].toString(),
+      local: json["location"],
+      descricao: json["description"]
+    );
+  }
 }

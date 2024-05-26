@@ -1,9 +1,12 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:seujobapp/model/vaga.dart';
 
 class VagaItem extends StatelessWidget {
-  const VagaItem({
+  late Vaga vaga;
+  VagaItem({
+    required this.vaga,
     Key? key
   }) : super(key: key);
 
@@ -28,7 +31,7 @@ class VagaItem extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text("VAGA TAL E TAL E TAL", style: TextStyle(fontSize: 20),),
+                          Text(vaga.titulo, style: TextStyle(fontSize: 20),),
                         ],
                       ),
                     )
@@ -51,7 +54,7 @@ class VagaItem extends StatelessWidget {
                                   alignment: Alignment.centerLeft,
                                   width: double.infinity,
                                   height: double.infinity,
-                                  child: Text("Salário: "),
+                                  child: Text("Salário: \n${vaga.salary}"),
                                 )
                             ),
                             Expanded(
@@ -60,7 +63,7 @@ class VagaItem extends StatelessWidget {
                                   alignment: Alignment.centerLeft,
                                   width: double.infinity,
                                   height: double.infinity,
-                                  child: Text("Formato: "),
+                                  child: Text("Formato: \n${vaga.formato.toUpperCase()}"),
                                 )
                             ),
                             Expanded(
@@ -69,7 +72,7 @@ class VagaItem extends StatelessWidget {
                                   alignment: Alignment.centerLeft,
                                   width: double.infinity,
                                   height: double.infinity,
-                                  child: Text("Carga horária:"),
+                                  child: Text("Local: \n${vaga.local.toUpperCase()}"),
                                 )
                             ),
                           ],
