@@ -15,6 +15,7 @@ class ApiRoutes {
 
   // Inscricao
   static const INSCRICAO = "/api/application";
+  static const VAGAS_INSCRITAS = " ";
 
   // Produtos
   static const PRODUTO_CREATE = "";

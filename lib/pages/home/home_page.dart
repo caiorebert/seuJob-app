@@ -9,20 +9,24 @@ import '../../model/user.dart';
 import '../../model/vaga.dart';
 import '../../providers/auth_provider.dart';
 import '../../utils/app_routes.dart';
+import 'components/inscricoes.dart';
+import 'components/vagas.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<StatefulWidget> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+  var _items = [Vagas(), Inscricoes()];
+
+  @override
   Widget build(BuildContext context) {
-    final auth = Provider.of<AuthProvider>(context);
-
-    final vagasList = Provider.of<VagaLista>(context);
-
-    vagasList.getVagas(auth.token.toString());
-
     return Scaffold(
       appBar: AppBar(
         leading: Icon(
@@ -34,50 +38,18 @@ class HomePage extends StatelessWidget {
           width: 50,
         ),
       ),
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        child: Column(
-          children: [
-            Container(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "Vagas postadas: ",
-                style: TextStyle(fontSize: 20),
-              ),
-              padding: EdgeInsets.fromLTRB(10, 15, 0, 15),
-            ),
-            Expanded(
-                child: Container(
-                    height: double.infinity,
-                    width: double.infinity,
-                    child: Consumer<VagaLista>(
-                      builder: (ctx, vagasList, child) {
-                        return ListView.builder(
-                          itemCount: vagasList.vagas.length,
-                          itemBuilder: (ctx, index) =>
-                              ChangeNotifierProvider.value(
-                                  value: vagasList.vagas[index],
-                                  child: InkWell(
-                                    onTap: () => {
-                                      Navigator.pushNamed(ctx, "/vaga",
-                                          arguments: vagasList.vagas[index])
-                                    },
-                                    child: VagaItem(vaga: vagasList.vagas[index]),
-                                  )),
-                        );
-                      },
-                    ),
-                )
-            )
-          ],
-        ),
-      ),
+      body: _items[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(icon: Icon(Icons.work), label: "Minhas Vagas"),
         ],
+        onTap: (index){
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+        currentIndex: _selectedIndex,
       ),
     );
   }

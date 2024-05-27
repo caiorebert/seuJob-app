@@ -14,6 +14,7 @@ class VagaLista with ChangeNotifier {
     return [..._vagas];
   }
 
+
   void getVagas(String token) async {
       final response = await http.get(Uri.parse(ApiRoutes.BASE_URL + ApiRoutes.VAGAS),
           headers: {
@@ -42,4 +43,19 @@ class VagaLista with ChangeNotifier {
       return null;
     }
   }
+
+  Future<Vaga?> getVagasInscritas(int id, String token) async {
+    final response = await http.get(Uri.parse(ApiRoutes.BASE_URL + ApiRoutes.VAGAS_INSCRITAS + '/$id'),
+        headers: {
+          'Authorization': "Bearer $token",
+        });
+    if (response.body.isNotEmpty) {
+        List<dynamic> jsonList = jsonDecode(response.body);
+        _vagas = jsonList.map((json) => Vaga.fromJson(json)).toList();
+        notifyListeners();
+    } else {
+      return null;
+    }
+  }
+
 }
