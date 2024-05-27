@@ -10,4 +10,4 @@ Link do vídeo:
 
 link do github:
 
-https://youtu.be/C68qmJE6mBc
+https://github.com/danluan/seuJobAPI
