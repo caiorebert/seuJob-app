@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:seujobapp/model/worker.dart';
 
 import '../model/user.dart';
 import 'package:http/http.dart' as http;
@@ -45,6 +46,9 @@ class AuthProvider with ChangeNotifier {
 
       try {
         User user = User.fromJson(jsonDecode(response.body));
+        Worker worker = Worker(id: '', userId: user.id);
+        worker.getWorkerbyId(user.id, token);
+        user.worker = worker;
         _user = user;
         _user.logged = true;
         notifyListeners();
@@ -53,6 +57,8 @@ class AuthProvider with ChangeNotifier {
         print("error");
       }
     }
+    logando = false;
+    notifyListeners();
     return false;
   }
 

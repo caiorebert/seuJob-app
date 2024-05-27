@@ -1,4 +1,6 @@
 import 'package:seujobapp/model/vaga_lista.dart';
+import 'package:seujobapp/model/worker.dart';
+import 'package:seujobapp/model/worker_lista.dart';
 import 'package:seujobapp/pages/home/components/vaga_item.dart';
 import 'package:seujobapp/providers/auth_provider.dart';
 import 'package:seujobapp/utils/app_routes.dart';
@@ -13,11 +15,16 @@ class Inscricoes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final auth = Provider.of<AuthProvider>(context);
-    final inscritasList = Provider.of<VagaLista>(context);
+    final vagasList = Provider.of<VagaLista>(context);
+    final workerList = Provider.of<WorkerLista>(context);
 
-    //inscritasList.getVagasInscritas(auth.user.id, auth.token.toString());
+    workerList.getWorkerbyId(auth.user.id, auth.token.toString());
 
-    return Container(
+    if (workerList.worker.id.isNotEmpty) {
+      vagasList.getVagasInscritas(int.parse(workerList.worker.id), auth.token.toString());
+    }
+
+    return (workerList.worker.id.isEmpty && vagasList.vagas.isEmpty) ? Center(child: Text("Carregando"),) : Container(
       height: double.infinity,
       width: double.infinity,
       child: Column(

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../model/user.dart';
+import '../../model/worker.dart';
 import '../../providers/auth_provider.dart';
 import '../../utils/app_routes.dart';
 
@@ -87,6 +88,9 @@ class LoginPage extends StatelessWidget {
                 final senha = _senhaController.text.trim();
                 if (login.isNotEmpty && senha.isNotEmpty) {
                   if ( await auth.login(login, senha)) {
+                    Worker worker = Worker(id: '', userId: '');
+                    await worker.getWorkerbyId(auth.user.id, auth.token.toString());
+                    auth.user.worker = worker;
                     if (context.mounted) {
                       Navigator.pushNamed(context, "/home");
                     }
