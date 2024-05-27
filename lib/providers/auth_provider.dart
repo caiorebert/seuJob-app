@@ -46,6 +46,7 @@ class AuthProvider with ChangeNotifier {
       try {
         User user = User.fromJson(jsonDecode(response.body));
         _user = user;
+        _user.logged = true;
         notifyListeners();
         return true;
       } catch (e) {
