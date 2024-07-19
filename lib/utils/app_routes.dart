@@ -6,4 +6,5 @@ class AppRoutes {
   static const INSCRITAS = '/inscricoes';
   static const PRODUCT_DETAIL = '/product-detail';
   static const PRODUCT_FORM = '/product-form';
+  static const SETTINGS = '/opcoes';
 }

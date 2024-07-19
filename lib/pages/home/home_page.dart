@@ -11,6 +11,7 @@ import '../../providers/auth_provider.dart';
 import '../../utils/app_routes.dart';
 import 'components/inscricoes.dart';
 import 'components/vagas.dart';
+import 'components/drawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -29,15 +30,22 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(
-          Icons.list_sharp,
-          size: 30,
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton( // Use um IconButton para adicionar a ação ao ícone
+                icon: Icon(Icons.list_sharp, size: 30),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                }
+            );
+          },
         ),
         title: Image.asset(
           "assets/images/logo.png",
           width: 50,
         ),
       ),
+      drawer: AppDrawer(),
       body: _items[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: [
