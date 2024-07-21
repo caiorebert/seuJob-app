@@ -36,8 +36,8 @@ class AppDrawer extends StatelessWidget {
             leading: Icon(Icons.person),
             title: Text('Meu Perfil'),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.pushReplacementNamed(context, '/perfil'); // Rota para a página de perfil
+              // Navigator.pop(context);
+              Navigator.pushReplacementNamed(context, AppRoutes.PERFIL); // Rota para a página de perfil
             },
           ),
           ListTile(

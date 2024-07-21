@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:seujobapp/model/vaga_lista.dart';
 import 'package:seujobapp/model/worker_lista.dart';
+import 'package:seujobapp/pages/curriculo/curriculo_page.dart';
 import 'package:seujobapp/pages/home/home_page.dart';
-import 'package:seujobapp/pages/home/settings/settings_page.dart';
+import 'package:seujobapp/pages/settings/settings_page.dart';
 import 'package:seujobapp/pages/user/cadastro_page.dart';
 import 'package:seujobapp/pages/user/login_page.dart';
 import 'package:seujobapp/pages/vaga/vaga_page.dart';
@@ -45,9 +46,10 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: HomePage(),
+        home: LoginPage(),
         routes: {
           AppRoutes.LOGIN : (context) => LoginPage(),
+          AppRoutes.PERFIL : (context) => CurriculoPage(),
           AppRoutes.CADASTRO : (context) => CadastroPage(),
           AppRoutes.HOME : (context) => HomePage(),
           AppRoutes.VAGA : (context) => VagaPage(),
