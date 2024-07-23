@@ -8,6 +8,7 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:seujobapp/pages/curriculo/components/form_info_academicas.dart';
 import 'package:seujobapp/pages/curriculo/components/form_info_pessoais.dart';
+import 'package:seujobapp/pages/curriculo/components/form_info_profissionais.dart';
 
 import '../../utils/app_routes.dart';
 
@@ -181,18 +182,19 @@ class _CurriculoPageState extends State<CurriculoPage> {
                     child: Scaffold(
                       appBar: AppBar(
                         title: TabBar(
+                          isScrollable: true,
                           tabs: [
-                            Tab(child: Text("Informações pessoais"),),
-                            Tab(child: Text("Informações acadêmicas"),),
-                            Tab(child: Text("Informações profissionais"),),
+                            Tab(text: "Informações pessoais",),
+                            Tab(text: "Informações acadêmicas"),
+                            Tab(text: "Informações profissionais"),
                           ],
                         ),
                       ),
                       body: TabBarView(
                         children: [
                           FormInfoPessoais(),
-                          FormInfoPessoais(),
-                          FormInfoPessoais(),
+                          FormInfoAcademicas(),
+                          FormInfoProfissionais(),
                         ],
                       ),
                     ),

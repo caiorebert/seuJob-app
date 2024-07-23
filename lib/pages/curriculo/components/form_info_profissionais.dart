@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class FormInfoPessoais extends StatefulWidget {
-  const FormInfoPessoais({
+class FormInfoProfissionais extends StatefulWidget {
+  const FormInfoProfissionais({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _FormInfoPessoaisState();
+  State<StatefulWidget> createState() => _FormInfoProfissionaisState();
 }
 
-class _FormInfoPessoaisState extends State<FormInfoPessoais> {
+class _FormInfoProfissionaisState extends State<FormInfoProfissionais> {
 
   @override
   Widget build(BuildContext context) {

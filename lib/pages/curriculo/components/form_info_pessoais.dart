@@ -17,6 +17,11 @@ class _FormInfoPessoaisState extends State<FormInfoPessoais> {
           width: double.infinity,
           child: ListView(
             children: [
+              Container(
+                padding: const EdgeInsets.fromLTRB(15, 25, 15, 15),
+                child: const Text("Sobre você:", style: TextStyle(fontSize: 20),),
+              ),
+              Divider(),
               SizedBox(
                 width: double.infinity,
                 child: Row(
@@ -88,6 +93,16 @@ class _FormInfoPessoaisState extends State<FormInfoPessoais> {
                   ],
                 ),
               ),
+              Container(
+                padding: const EdgeInsets.fromLTRB(15, 25, 15, 15),
+                child: const Text("Localização:", style: TextStyle(fontSize: 20),),
+              ),
+              Divider(),
+              Container(
+                width: double.infinity,
+                height: 150,
+                color: Colors.red,
+              )
             ],
           ),
     );
