@@ -11,6 +11,8 @@ import 'package:seujobapp/pages/vaga/vaga_page.dart';
 import 'package:seujobapp/providers/auth_provider.dart';
 import 'package:seujobapp/providers/theme_provider.dart';
 import 'package:seujobapp/utils/app_routes.dart';
+import 'package:seujobapp/pages/analitics/analitics_page.dart';
+import 'package:seujobapp/pages/sobre/about_page.dart';
 
 void main() {
   runApp(
@@ -46,7 +48,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: LoginPage(),
+        home: HomePage(),
         routes: {
           AppRoutes.LOGIN : (context) => LoginPage(),
           AppRoutes.PERFIL : (context) => CurriculoPage(),
@@ -54,6 +56,8 @@ class MyApp extends StatelessWidget {
           AppRoutes.HOME : (context) => HomePage(),
           AppRoutes.VAGA : (context) => VagaPage(),
           AppRoutes.SETTINGS : (context) => SettingsPage(),
+          AppRoutes.ANALITICS : (context) => AnaliticsPage(),
+          AppRoutes.ABOUT : (context) => AboutPage(),
         },
       ),
     );

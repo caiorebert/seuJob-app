@@ -41,11 +41,27 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
+            leading: Icon(Icons.analytics),
+            title: Text('Estatísticas'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushReplacementNamed(context, AppRoutes.ANALITICS);
+            },
+          ),
+          ListTile(
             leading: Icon(Icons.settings),
             title: Text('Options'),
             onTap: () {
               Navigator.pop(context);
               Navigator.pushReplacementNamed(context, AppRoutes.SETTINGS);
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.newspaper),
+            title: Text('Sobre'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushReplacementNamed(context, AppRoutes.ABOUT);
             },
           ),
           ListTile(

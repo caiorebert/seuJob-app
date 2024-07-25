@@ -8,4 +8,6 @@ class AppRoutes {
   static const PRODUCT_DETAIL = '/product-detail';
   static const PRODUCT_FORM = '/product-form';
   static const SETTINGS = '/opcoes';
+  static const ANALITICS = '/estatisticas';
+  static const ABOUT = '/sobre';
 }
