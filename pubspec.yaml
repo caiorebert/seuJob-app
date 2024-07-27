@@ -41,6 +41,8 @@ dependencies:
   image_cropper: ^1.1.2
   modal_bottom_sheet: ^3.0.0
   shared_preferences: ^2.2.3
+  google_maps_flutter: 2.6.1
+  geolocator: ^7.6.2
 
 dev_dependencies:
   flutter_test:

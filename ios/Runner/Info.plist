@@ -49,5 +49,7 @@
     <string>App precisa de acesso para tirar fotos</string>
     <key>NSPhotoLibraryUsageDescription</key>
     <string>App precisa de acesso a galeria</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>App precisa de acesso a localização</string>
 </dict>
 </plist>
