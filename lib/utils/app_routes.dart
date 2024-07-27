@@ -10,4 +10,7 @@ class AppRoutes {
   static const SETTINGS = '/opcoes';
   static const ANALITICS = '/estatisticas';
   static const ABOUT = '/sobre';
+  static const EMPRESASCADASTRADAS = '/sobreempresas';
+  static const RECOMENDACAO = '/vagasrecomendadas';
+  static const RECOMENDACOES = '/recomendacoes';
 }

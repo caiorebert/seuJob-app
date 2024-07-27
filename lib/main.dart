@@ -3,7 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:seujobapp/model/vaga_lista.dart';
 import 'package:seujobapp/model/worker_lista.dart';
 import 'package:seujobapp/pages/curriculo/curriculo_page.dart';
+import 'package:seujobapp/pages/empresas/sobre_empresas.dart';
 import 'package:seujobapp/pages/home/home_page.dart';
+import 'package:seujobapp/pages/recomendacoes/dicas_page.dart';
+import 'package:seujobapp/pages/recomendadas/vagas_recomendadas.dart';
 import 'package:seujobapp/pages/settings/settings_page.dart';
 import 'package:seujobapp/pages/user/cadastro_page.dart';
 import 'package:seujobapp/pages/user/login_page.dart';
@@ -58,6 +61,9 @@ class MyApp extends StatelessWidget {
           AppRoutes.SETTINGS : (context) => SettingsPage(),
           AppRoutes.ANALITICS : (context) => AnaliticsPage(),
           AppRoutes.ABOUT : (context) => AboutPage(),
+          AppRoutes.EMPRESASCADASTRADAS : (context) => SobreEmpresasPage(),
+          AppRoutes.RECOMENDACAO : (context) => RecomendadasPage(),
+          AppRoutes.RECOMENDACOES : (context) => DicasPage(),
         },
       ),
     );

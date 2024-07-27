@@ -49,6 +49,30 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
+            leading: Icon(Icons.auto_graph),
+            title: Text('Vagas Recomendadas'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushReplacementNamed(context, AppRoutes.RECOMENDACAO);
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.factory),
+            title: Text('Empresas Cadastradas'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushReplacementNamed(context, AppRoutes.EMPRESASCADASTRADAS);
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.lightbulb),
+            title: Text('Dicas e Recomendações'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushReplacementNamed(context, AppRoutes.RECOMENDACOES);
+            },
+          ),
+          ListTile(
             leading: Icon(Icons.settings),
             title: Text('Options'),
             onTap: () {
@@ -69,26 +93,26 @@ class AppDrawer extends StatelessWidget {
             title: Text('Logout'),
             onTap: () {
               showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    title: Text('Logout'),
-                    content: Text('Deseja realmente sair?'),
-                    actions: <Widget>[
-                      TextButton(
-                        onPressed: () => Navigator.of(context).pop(false),
-                        child: Text('Não'),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pop(true);
-                          Navigator.pushReplacementNamed(context, '/login'); // Rota para a página de login
-                        },
-                        child: Text('Sim'),
-                      ),
-                    ]
-                  );
-                }
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                        title: Text('Logout'),
+                        content: Text('Deseja realmente sair?'),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () => Navigator.of(context).pop(false),
+                            child: Text('Não'),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop(true);
+                              Navigator.pushReplacementNamed(context, '/login'); // Rota para a página de login
+                            },
+                            child: Text('Sim'),
+                          ),
+                        ]
+                    );
+                  }
               );
             },
           ),
