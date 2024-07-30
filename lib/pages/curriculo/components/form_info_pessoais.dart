@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class FormInfoPessoais extends StatefulWidget {
@@ -13,22 +15,33 @@ class FormInfoPessoais extends StatefulWidget {
 }
 
 class _FormInfoPessoaisState extends State<FormInfoPessoais> {
-  final Completer<GoogleMapController> _controller =
-  Completer<GoogleMapController>();
+  final TextEditingController _ruaController = TextEditingController();
+  final TextEditingController _numeroController = TextEditingController();
+  final TextEditingController _bairroController = TextEditingController();
+  final TextEditingController _complementoController = TextEditingController();
+  final TextEditingController _paisController = TextEditingController();
+  final TextEditingController _estadoController = TextEditingController();
+  final TextEditingController _cidadeController = TextEditingController();
+  final TextEditingController _cepController = TextEditingController();
 
-  static const CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
-  );
-
-  static const CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
-      zoom: 19.151926040649414);
+  bool selecionando = false;
 
   @override
   Widget build(BuildContext context) {
+    if (ModalRoute.of(context)!.settings.arguments != null) {
+      Placemark address = ModalRoute.of(context)!.settings.arguments as Placemark;
+      if (!selecionando) {
+        _paisController.text = address.country.toString();
+        _estadoController.text = address.administrativeArea.toString();
+        _cidadeController.text = address.subAdministrativeArea.toString();
+        _ruaController.text = address.thoroughfare.toString();
+        _numeroController.text = address.subThoroughfare.toString();
+        // _complementoController.text = address.subAdministrativeArea.toString();
+        _bairroController.text = address.subLocality.toString();
+        _cepController.text = address.postalCode.toString();
+        Fluttertoast.showToast(msg: "Endereço carregado com sucesso!", toastLength: Toast.LENGTH_SHORT);
+      }
+    }
     return Container(
           width: double.infinity,
           child: ListView(
@@ -109,21 +122,24 @@ class _FormInfoPessoaisState extends State<FormInfoPessoais> {
                   ],
                 ),
               ),
-              Divider(),
+              const Divider(),
               Container(
                 padding: const EdgeInsets.fromLTRB(15, 25, 15, 15),
                 child: const Text("Localização:", style: TextStyle(fontSize: 20),),
               ),
-              Divider(),
+              const Divider(),
               Container(
                 width: double.infinity,
                 child: Padding(
                   padding: EdgeInsets.all(15),
                   child: ElevatedButton(
                     onPressed: () {
+                      setState(() {
+                        selecionando = true;
+                      });
                       Navigator.pushNamed(context, '/google_maps');
                     },
-                    child: Text("Selecionar no mapa"),
+                    child: const Text("Selecionar no mapa"),
                   ),
                 )
               ),
@@ -131,18 +147,28 @@ class _FormInfoPessoaisState extends State<FormInfoPessoais> {
                   padding: EdgeInsets.all(15),
                   child: TextFormField(
                     decoration: InputDecoration(hintText: "País"),
+                    controller: _paisController,
                   )
               ),
               Container(
                   padding: EdgeInsets.all(15),
                   child: TextFormField(
                     decoration: InputDecoration(hintText: "Estado"),
+                    controller: _estadoController,
+                  )
+              ),
+              Container(
+                  padding: EdgeInsets.all(15),
+                  child: TextFormField(
+                    decoration: InputDecoration(hintText: "Cidade"),
+                    controller: _cidadeController,
                   )
               ),
               Container(
                 padding: EdgeInsets.all(15),
                   child: TextFormField(
                     decoration: InputDecoration(hintText: "Rua"),
+                    controller: _ruaController,
                   )
               ),
               SizedBox(
@@ -154,12 +180,14 @@ class _FormInfoPessoaisState extends State<FormInfoPessoais> {
                             padding: const EdgeInsets.all(15),
                             child: TextFormField(
                               decoration: InputDecoration(hintText: "Número"),
+                              controller: _numeroController,
                             ))),
                     Expanded(
                         child: Padding(
                             padding: const EdgeInsets.all(15),
                             child: TextFormField(
                               decoration: InputDecoration(hintText: "Bairro"),
+                              controller: _bairroController,
                             )
                         )
                     ),
@@ -170,6 +198,7 @@ class _FormInfoPessoaisState extends State<FormInfoPessoais> {
                   padding: EdgeInsets.all(15),
                   child: TextFormField(
                     decoration: InputDecoration(hintText: "Complemento"),
+                    controller: _complementoController,
                   )
               ),
             ],

@@ -17,18 +17,28 @@ class AuthProvider with ChangeNotifier {
   User get user => _user;
 
 
-  Future<bool> login(String login, String senha) async {
+  Future<bool> login(String login, String senha) async{
     logando = true;
     notifyListeners();
-    var responseToken = await http.post(Uri.parse(ApiRoutes.BASE_URL + ApiRoutes.LOGIN),
-        body: jsonEncode({
-          "login": login,
-          "password": senha
-        }),
-      headers: {
-      'Content-Type': "application/json"
-      }
-    );
+
+    http.Response responseToken;
+
+    try {
+      responseToken = await http.post(Uri.parse(ApiRoutes.BASE_URL + ApiRoutes.LOGIN),
+          body: jsonEncode({
+            "login": login,
+            "password": senha
+          }),
+          headers: {
+            'Content-Type': "application/json"
+          }
+      ).timeout(const Duration(seconds: 5));
+    } catch (e) {
+      logando = false;
+      notifyListeners();
+      throw "Erro ao tentar se conectar com o servidor";
+    }
+
     if (responseToken.body.isNotEmpty) {
       final token = jsonDecode(responseToken.body)["token"];
       this.token = token;
