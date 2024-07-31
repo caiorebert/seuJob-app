@@ -10,23 +10,16 @@ class DicasPage extends StatefulWidget {
 }
 
 class _DicasPageState extends State<DicasPage> {
-  bool _darkMode = false;
-
-  void _toggleDarkMode(bool value) {
-    setState(() {
-      _darkMode = value;
-    });
-  }
+  // ... (seu código para o modo escuro)
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp( // Envolve o Scaffold com MaterialApp
+    return MaterialApp(
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
-      themeMode: _darkMode ? ThemeMode.dark : ThemeMode.light,
-      home: Scaffold( // Adicione o Scaffold aqui
+      home: Scaffold(
         appBar: AppBar(
-          title: Text('Configurações'),
+          title: Text('Dicas para Currículo'),
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
@@ -35,14 +28,30 @@ class _DicasPageState extends State<DicasPage> {
           ),
         ),
         body: ListView(
-          children: <Widget>[
-            SwitchListTile(
-              title: Text('Modo Escuro'),
-              value: _darkMode,
-              onChanged: (value) {
-                Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
-              },
+          children: [
+            ExpansionTile(
+              title: Text('Estrutura do Currículo'),
+              children: [
+                // Conteúdo da seção "Estrutura do Currículo"
+                ListTile(title: Text('Informações Pessoais: Nome, contatos')),
+                ListTile(title: Text('Resumo: Breve descrição do seu perfil')),
+                ListTile(title: Text('Experiência Profissional: Projetos Flutter')),
+                // ... (outros itens da lista)
+              ],
             ),
+
+            ExpansionTile(
+              title: Text('Conteúdo do Currículo'),
+              children: [
+                // Conteúdo da seção "Conteúdo do Currículo"
+                ListTile(title: Text('Seja específico: Use verbos de ação')),
+                ListTile(title: Text('Use palavras-chave: Flutter, widgets, etc.')),
+                // ... (outros itens da lista)
+              ],
+            ),
+
+            // Adicione os outros ExpansionTiles para "Formatação" e "Dicas Extras"
+            // da mesma forma que acima
           ],
         ),
       ),
