@@ -1,32 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:seujobapp/model/vaga_lista.dart'; // Importe o modelo de vagas
+import 'package:seujobapp/providers/auth_provider.dart';
 import 'package:seujobapp/utils/app_routes.dart';
 
-import '../../providers/theme_provider.dart';
-
-class SobreEmpresasPage extends StatefulWidget {
+class EmpresasPage extends StatefulWidget {
   @override
-  _SobreEmpresasPageState createState() => _SobreEmpresasPageState();
+  _EmpresasPageState createState() => _EmpresasPageState();
 }
 
-class _SobreEmpresasPageState extends State<SobreEmpresasPage> {
+class _EmpresasPageState extends State<EmpresasPage> {
   bool _darkMode = false;
-
-  void _toggleDarkMode(bool value) {
-    setState(() {
-      _darkMode = value;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp( // Envolve o Scaffold com MaterialApp
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
-      themeMode: _darkMode ? ThemeMode.dark : ThemeMode.light,
-      home: Scaffold( // Adicione o Scaffold aqui
+    final auth = Provider.of<AuthProvider>(context);
+    final vagasList = Provider.of<VagaLista>(context);
+    vagasList.getVagas(auth.token.toString()); // Supondo que você tenha o token de autenticação
+
+    return MaterialApp(
+      home: Scaffold(
         appBar: AppBar(
-          title: Text('Configurações'),
+          title: Text('Empresas'),
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
@@ -34,14 +29,29 @@ class _SobreEmpresasPageState extends State<SobreEmpresasPage> {
             },
           ),
         ),
-        body: ListView(
-          children: <Widget>[
-            SwitchListTile(
-              title: Text('Modo Escuro'),
-              value: _darkMode,
-              onChanged: (value) {
-                Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
-              },
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 15, 0, 15),
+              child: Text(
+                'Empresas Conveniadas:',
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
+            Expanded(
+              child: Consumer<VagaLista>(
+                builder: (ctx, vagasList, child) {
+                  return ListView.builder(
+                    itemCount: vagasList.vagas.length,
+                    itemBuilder: (ctx, index) {
+                      final empresa = vagasList.vagas[index].empresa;
+                      return ListTile( // Use ListTile para exibir o nome da empresa
+                        title: Text(empresa), // Exibe apenas o nome da empresa
+                      );
+                    },
+                  );
+                },
+              ),
             ),
           ],
         ),

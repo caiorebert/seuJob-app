@@ -10,23 +10,14 @@ class AboutPage extends StatefulWidget {
 }
 
 class _AboutPageState extends State<AboutPage> {
-  bool _darkMode = false;
-
-  void _toggleDarkMode(bool value) {
-    setState(() {
-      _darkMode = value;
-    });
-  }
+  // ... (seu código para o modo escuro)
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp( // Envolve o Scaffold com MaterialApp
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
-      themeMode: _darkMode ? ThemeMode.dark : ThemeMode.light,
-      home: Scaffold( // Adicione o Scaffold aqui
+    return MaterialApp(
+      home: Scaffold(
         appBar: AppBar(
-          title: Text('Configurações'),
+          title: Text('Sobre'),
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
@@ -34,16 +25,35 @@ class _AboutPageState extends State<AboutPage> {
             },
           ),
         ),
-        body: ListView(
-          children: <Widget>[
-            SwitchListTile(
-              title: Text('Modo Escuro'),
-              value: _darkMode,
-              onChanged: (value) {
-                Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
-              },
-            ),
-          ],
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              // Logo do Aplicativo (opcional)
+              Image.asset('assets/images/logo.png', height: 100),
+
+              SizedBox(height: 20),
+
+              // Título e Descrição
+              Text(
+                'SeuJobApp',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 10),
+              Text(
+                'Seu aplicativo para encontrar as melhores oportunidades de emprego em Flutter. Encontre vagas, candidate-se e acompanhe o processo seletivo de forma simples e rápida.',
+                textAlign: TextAlign.center,
+              ),
+
+              SizedBox(height: 20),
+
+              // Versão e Informações de Contato
+              Text('Versão 1.0.0'),
+              SizedBox(height: 5),
+              Text('Contato: contato@seujobapp.com'), // Substitua pelo seu e-mail de contato
+            ],
+          ),
         ),
       ),
     );

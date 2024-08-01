@@ -10,7 +10,6 @@ class DicasPage extends StatefulWidget {
 }
 
 class _DicasPageState extends State<DicasPage> {
-  // ... (seu código para o modo escuro)
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +48,6 @@ class _DicasPageState extends State<DicasPage> {
                 // ... (outros itens da lista)
               ],
             ),
-
-            // Adicione os outros ExpansionTiles para "Formatação" e "Dicas Extras"
-            // da mesma forma que acima
           ],
         ),
       ),

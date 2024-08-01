@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
           AppRoutes.SETTINGS : (context) => SettingsPage(),
           AppRoutes.ANALITICS : (context) => AnaliticsPage(),
           AppRoutes.ABOUT : (context) => AboutPage(),
-          AppRoutes.EMPRESASCADASTRADAS : (context) => SobreEmpresasPage(),
+          AppRoutes.EMPRESASCADASTRADAS : (context) => EmpresasPage(),
           AppRoutes.RECOMENDACAO : (context) => RecomendadasPage(),
           AppRoutes.RECOMENDACOES : (context) => DicasPage(),
         },

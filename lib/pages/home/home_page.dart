@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         leading: Builder(
           builder: (BuildContext context) {
-            return IconButton( // Use um IconButton para adicionar a ação ao ícone
+            return IconButton(
                 icon: Icon(Icons.list_sharp, size: 30),
                 onPressed: () {
                   Scaffold.of(context).openDrawer();
