@@ -42,7 +42,7 @@ class _AboutPageState extends State<AboutPage> {
               ),
               SizedBox(height: 10),
               Text(
-                'Seu aplicativo para encontrar as melhores oportunidades de emprego em Flutter. Encontre vagas, candidate-se e acompanhe o processo seletivo de forma simples e rápida.',
+                'Seu aplicativo para encontrar as melhores oportunidades de emprego. Encontre vagas, candidate-se e acompanhe o processo seletivo de forma simples e rápida.',
                 textAlign: TextAlign.center,
               ),
 
