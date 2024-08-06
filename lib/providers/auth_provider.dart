@@ -16,42 +16,35 @@ class AuthProvider with ChangeNotifier {
 
   User get user => _user;
 
-
-  Future<bool> login(String login, String senha) async{
+  Future<bool> login(String login, String senha) async {
     logando = true;
     notifyListeners();
 
     http.Response responseToken;
 
     try {
-      responseToken = await http.post(Uri.parse(ApiRoutes.BASE_URL + ApiRoutes.LOGIN),
-          body: jsonEncode({
-            "login": login,
-            "password": senha
-          }),
+      responseToken = await http.post(
+          Uri.parse(ApiRoutes.BASE_URL + ApiRoutes.LOGIN),
+          body: jsonEncode({"login": login, "password": senha}),
           headers: {
             'Content-Type': "application/json"
-          }
-      ).timeout(const Duration(seconds: 5));
+          }).timeout(const Duration(seconds: 5));
     } catch (e) {
       logando = false;
       notifyListeners();
       throw "Erro ao tentar se conectar com o servidor";
     }
 
-    if (responseToken.body.isNotEmpty) {
+    if (responseToken.statusCode == 200) {
       final token = jsonDecode(responseToken.body)["token"];
       this.token = token;
-      var response = await http.post(Uri.parse(ApiRoutes.BASE_URL + ApiRoutes.USER),
-          body: jsonEncode({
-            "login": login,
-            "password": senha
-          }),
-        headers: {
-          'Content-Type': "application/json",
-          'Authorization': "Bearer $token",
-        }
-      );
+      var response = await http.post(
+          Uri.parse(ApiRoutes.BASE_URL + ApiRoutes.USER),
+          body: jsonEncode({"login": login, "password": senha}),
+          headers: {
+            'Content-Type': "application/json",
+            'Authorization': "Bearer $token",
+          });
       logando = false;
 
       try {
@@ -64,18 +57,18 @@ class AuthProvider with ChangeNotifier {
         notifyListeners();
         return true;
       } catch (e) {
-        print("error");
+        print(e.toString());
       }
+    } else {
+      print("erro ao logar");
     }
     logando = false;
     notifyListeners();
     return false;
   }
 
-
   void logout() {
     _user.logged = false;
     notifyListeners();
   }
-
 }

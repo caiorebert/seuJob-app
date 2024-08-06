@@ -17,180 +17,59 @@ class _FormInfoAcademicasState extends State<FormInfoAcademicas> {
           width: double.infinity,
           child: ListView(
             children: [
-              SizedBox(
-                width: double.infinity,
-                child: Row(
-                  children: [
-                    Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(15),
-                          child: TextFormField(
-                            decoration: InputDecoration(hintText: "Nome"),
-                          ),
-                        )),
-                    Expanded(
-                        child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: TextFormField(
-                              decoration: InputDecoration(hintText: "Sobrenome"),
-                            ))),
-                  ],
+              Padding(
+                padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                child: Text(
+                  'Formação Acadêmica',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-              SizedBox(
-                  width: double.infinity,
-                  child: Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: TextFormField(
-                      decoration: InputDecoration(hintText: "E-mail"),
-                    ),
-                  )
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: Row(
-                  children: [
-                    Expanded(
-                        child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: TextFormField(
-                              decoration: InputDecoration(hintText: "Idade"),
-                            ))),
-                    Expanded(
-                        child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: TextFormField(
-                              decoration: InputDecoration(hintText: "Genêro"),
-                            )
-                        )
-                    ),
-                  ],
+              Padding(
+                padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    labelText: 'Instituição',
+                    border: OutlineInputBorder(),
+                  ),
                 ),
               ),
-              SizedBox(
-                width: double.infinity,
-                child: Row(
-                  children: [
-                    Expanded(
-                        child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: TextFormField(
-                              decoration: InputDecoration(hintText: "Idade"),
-                            ))),
-                    Expanded(
-                        child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: TextFormField(
-                              decoration: InputDecoration(hintText: "Genêro"),
-                            )
-                        )
-                    ),
-                  ],
+              Padding(
+                padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    labelText: 'Curso',
+                    border: OutlineInputBorder(),
+                  ),
                 ),
               ),
-              SizedBox(
-                width: double.infinity,
-                child: Row(
-                  children: [
-                    Expanded(
-                        child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: TextFormField(
-                              decoration: InputDecoration(hintText: "Idade"),
-                            ))),
-                    Expanded(
-                        child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: TextFormField(
-                              decoration: InputDecoration(hintText: "Genêro"),
-                            )
-                        )
-                    ),
-                  ],
+              Padding(
+                padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    labelText: 'Ano de início',
+                    border: OutlineInputBorder(),
+                  ),
                 ),
               ),
-              SizedBox(
-                width: double.infinity,
-                child: Row(
-                  children: [
-                    Expanded(
-                        child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: TextFormField(
-                              decoration: InputDecoration(hintText: "Idade"),
-                            ))),
-                    Expanded(
-                        child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: TextFormField(
-                              decoration: InputDecoration(hintText: "Genêro"),
-                            )
-                        )
-                    ),
-                  ],
+              Padding(
+                padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    labelText: 'Ano de conclusão',
+                    border: OutlineInputBorder(),
+                  ),
                 ),
               ),
-              SizedBox(
-                width: double.infinity,
-                child: Row(
-                  children: [
-                    Expanded(
-                        child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: TextFormField(
-                              decoration: InputDecoration(hintText: "Idade"),
-                            ))),
-                    Expanded(
-                        child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: TextFormField(
-                              decoration: InputDecoration(hintText: "Genêro"),
-                            )
-                        )
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: Row(
-                  children: [
-                    Expanded(
-                        child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: TextFormField(
-                              decoration: InputDecoration(hintText: "Idade"),
-                            ))),
-                    Expanded(
-                        child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: TextFormField(
-                              decoration: InputDecoration(hintText: "Genêro"),
-                            )
-                        )
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: Row(
-                  children: [
-                    Expanded(
-                        child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: TextFormField(
-                              decoration: InputDecoration(hintText: "Idade"),
-                            ))),
-                    Expanded(
-                        child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: TextFormField(
-                              decoration: InputDecoration(hintText: "Genêro"),
-                            )
-                        )
-                    ),
-                  ],
+              Padding(
+                padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    labelText: 'Descrição',
+                    border: OutlineInputBorder(),
+                  ),
                 ),
               ),
             ],
