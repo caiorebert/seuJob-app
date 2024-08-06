@@ -1,7 +1,7 @@
 class ApiRoutes {
   static final BASE_URL = LOCAL;
   static final PROD = 'http://';
-  static final LOCAL = 'http://192.168.2.7:8080/api';
+  static final LOCAL = 'http://192.168.56.1:8080/api';
 
   // Users
   static const LOGIN = "/auth";
