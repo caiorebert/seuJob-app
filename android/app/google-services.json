@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "235265179206",
+    "project_id": "seu-jobapp",
+    "storage_bucket": "seu-jobapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:235265179206:android:f6b796522b59a78ba61447",
+        "android_client_info": {
+          "package_name": "com.example.seujobapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDStj6ces0UdQfz6P7dhaQ1WQGAIpeL8Pg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
